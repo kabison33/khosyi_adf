@@ -1,0 +1,14 @@
+{
+	"name": "AzureSynapseAnalytics1",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDW",
+		"typeProperties": {
+			"server": "ksynws-ondemand.sql.azuresynapse.net",
+			"database": "udacity",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SystemAssignedManagedIdentity"
+		}
+	}
+}
