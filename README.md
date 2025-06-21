@@ -2,15 +2,10 @@
 
 This pipeline project works as follow:
 
---------------------------------------------------------------------------------------------------------
-                                   AZURE DATA FACTORY
---------------------------------------------------------------------------------------------------------
---------------------|                |--------------|                        |------------------------|
-Sample Excel Files  |>>>> LOAD >>>>>>| Azure SQL DB |>>>>>> TRANSFORM >>>>>>>| Azure SQL DB and       |        
-in Azure data lake  |                |--------------|                        | Synapse Serverless SQL |
---------------------|                                                        |------------------------|
---------------------------------------------------------------------------------------------------------
 
+AZURE DATA FACTORY
+-------------------
+Sample excel files in Azure data lake  >>>>> LOAD >>>>>> Azure SQL DB  >>>>>> TRANSFORM >>>>>> Azure SQL DB and Synapse Serverless SQL
 
 Sample excel files in azure data lake:
 - payroll 2020
@@ -22,3 +17,12 @@ Sample excel files in azure data lake:
 The above sample files are loaded into Azure SQL DB and then transformed by using union, filter with parameterisation, derived columns,
 and aggregation to create a fact table for total pay given to the different agencies in the selected year. This aggregated summary table is then
 loaded back into the azure sql db as a summary table and also into the serverless sql in azure synapse.
+
+--------------------------------------------------------------------------------------------------------
+                                   AZURE DATA FACTORY
+--------------------------------------------------------------------------------------------------------
+--------------------|                |--------------|                        |------------------------|
+Sample Excel Files  |>>>> LOAD >>>>>>| Azure SQL DB |>>>>>> TRANSFORM >>>>>>>| Azure SQL DB and       |        
+in Azure data lake  |                |--------------|                        | Synapse Serverless SQL |
+--------------------|                                                        |------------------------|
+--------------------------------------------------------------------------------------------------------
