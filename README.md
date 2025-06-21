@@ -1,10 +1,7 @@
 # khosyi_adf
 
-This pipeline project works as follow:
-
-
-AZURE DATA FACTORY
--------------------
+This azure data factory pipeline project works as follow:
+--
 Sample excel files in Azure data lake  >>>>> LOAD >>>>>> Azure SQL DB  >>>>>> TRANSFORM >>>>>> Azure SQL DB and Synapse Serverless SQL
 
 Sample excel files in azure data lake:
