@@ -1,9 +1,9 @@
 {
 	"name": "khosyiadf",
-	"location": "eastus",
+	"location": "uksouth",
 	"identity": {
 		"type": "SystemAssigned",
-		"principalId": "e828292b-be4b-4227-8a67-1f3a8c320d12",
+		"principalId": "d1197d36-fbcc-4bf6-926c-4048bd312ef9",
 		"tenantId": "91370a31-38d4-4605-9ae1-2df6db81ddec"
 	}
 }

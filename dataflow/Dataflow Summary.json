@@ -6,40 +6,47 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "i2_payroll_2020_sqldb",
+						"referenceName": "sqldb_pay2020",
 						"type": "DatasetReference"
 					},
-					"name": "SQLDBPayroll2020"
+					"name": "sqldbPay2020"
 				},
 				{
 					"dataset": {
-						"referenceName": "i2_payroll_2021_sqldb",
+						"referenceName": "sqldb_pay2021",
 						"type": "DatasetReference"
 					},
-					"name": "SQLDBPayroll2021"
+					"name": "sqldbPay2021"
 				}
 			],
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "o3_payroll_summary",
+						"referenceName": "sqldb_summary",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "sqldbSummary"
+				},
+				{
+					"dataset": {
+						"referenceName": "adls_summary",
+						"type": "DatasetReference"
+					},
+					"name": "adlsSummary"
 				}
 			],
 			"transformations": [
 				{
-					"name": "CombineYears"
+					"name": "combineYears"
 				},
 				{
-					"name": "FilterYear"
+					"name": "filterYear"
 				},
 				{
-					"name": "DeriveTotalPaid"
+					"name": "calculateTotalPaid"
 				},
 				{
-					"name": "TotalPaidSummary"
+					"name": "summariseTotalPaid"
 				}
 			],
 			"scriptLines": [
@@ -70,7 +77,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SQLDBPayroll2020",
+				"     format: 'table') ~> sqldbPay2020",
 				"source(output(",
 				"          FiscalYear as integer,",
 				"          PayrollNumber as integer,",
@@ -95,14 +102,14 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> SQLDBPayroll2021",
-				"SQLDBPayroll2020, SQLDBPayroll2021 union(byName: true)~> CombineYears",
-				"CombineYears filter(FiscalYear >= $dataflow_param_fiscalyear) ~> FilterYear",
-				"FilterYear derive(TotalPaid = RegularGrossPaid + TotalOTPaid + TotalOtherPay) ~> DeriveTotalPaid",
-				"DeriveTotalPaid aggregate(groupBy(AgencyName,",
-				"          FiscalYear),",
-				"     TotalPaid = sum(TotalPaid)) ~> TotalPaidSummary",
-				"TotalPaidSummary sink(allowSchemaDrift: true,",
+				"     format: 'table') ~> sqldbPay2021",
+				"sqldbPay2020, sqldbPay2021 union(byName: true)~> combineYears",
+				"combineYears filter(toInteger(FiscalYear) >= $dataflow_param_fiscalyear) ~> filterYear",
+				"filterYear derive(TotalPaid = RegularGrossPaid + TotalOTPaid+TotalOtherPay) ~> calculateTotalPaid",
+				"calculateTotalPaid aggregate(groupBy(FiscalYear,",
+				"          AgencyName),",
+				"     TotalPaid = sum(TotalPaid)) ~> summariseTotalPaid",
+				"summariseTotalPaid sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          FiscalYear as integer,",
@@ -117,7 +124,20 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          FiscalYear = AgencyName,",
+				"          AgencyName = FiscalYear,",
+				"          TotalPaid",
+				"     )) ~> sqldbSummary",
+				"summariseTotalPaid sink(allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     truncate: true,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> adlsSummary"
 			]
 		}
 	}
