@@ -6,6 +6,10 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "khosyiadf"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/7c807c5f-59fe-4b36-a3d2-8364c12a574e/resourceGroups/RG/providers/Microsoft.Storage/storageAccounts/khosyistorageaccount"
 		}
 	},
 	"variables": {
@@ -428,6 +432,38 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/adls-sqldb_title')]",
 				"[concat(variables('factoryId'), '/dataflows/adls-sqldb_pay2021')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "main",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/adlsnycpayroll-khosyi-y/blobs/dirpayrollfiles/",
+					"blobPathEndsWith": ".csv",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('trigger1_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated",
+						"Microsoft.Storage.BlobDeleted"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/main')]"
 			]
 		}
 	]
