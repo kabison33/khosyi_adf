@@ -14,9 +14,6 @@
 		"AzureSynapseAnalytics1_password": {
 			"value": ""
 		},
-		"nycpayroll_link_password": {
-			"value": ""
-		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://khosyistorageaccount.dfs.core.windows.net/"
 		},
@@ -37,15 +34,6 @@
 		},
 		"AzureSynapseAnalytics1_properties_typeProperties_userName": {
 			"value": "sqladminuser"
-		},
-		"nycpayroll_link_properties_typeProperties_server": {
-			"value": "kush-sql-db-server.database.windows.net"
-		},
-		"nycpayroll_link_properties_typeProperties_database": {
-			"value": "db_nycpayroll"
-		},
-		"nycpayroll_link_properties_typeProperties_userName": {
-			"value": "sqldbadmin"
 		}
 	}
 }

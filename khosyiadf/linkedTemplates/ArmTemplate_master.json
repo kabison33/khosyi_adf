@@ -19,10 +19,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSynapseAnalytics1'"
 		},
-		"nycpayroll_link_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'nycpayroll_link'"
-		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://khosyistorageaccount.dfs.core.windows.net/"
@@ -50,18 +46,6 @@
 		"AzureSynapseAnalytics1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sqladminuser"
-		},
-		"nycpayroll_link_properties_typeProperties_server": {
-			"type": "string",
-			"defaultValue": "kush-sql-db-server.database.windows.net"
-		},
-		"nycpayroll_link_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "db_nycpayroll"
-		},
-		"nycpayroll_link_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "sqldbadmin"
 		},
 		"containerUri": {
 			"type": "string",
@@ -99,9 +83,6 @@
 					"AzureSynapseAnalytics1_password": {
 						"value": "[parameters('AzureSynapseAnalytics1_password')]"
 					},
-					"nycpayroll_link_password": {
-						"value": "[parameters('nycpayroll_link_password')]"
-					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
@@ -122,15 +103,6 @@
 					},
 					"AzureSynapseAnalytics1_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSynapseAnalytics1_properties_typeProperties_userName')]"
-					},
-					"nycpayroll_link_properties_typeProperties_server": {
-						"value": "[parameters('nycpayroll_link_properties_typeProperties_server')]"
-					},
-					"nycpayroll_link_properties_typeProperties_database": {
-						"value": "[parameters('nycpayroll_link_properties_typeProperties_database')]"
-					},
-					"nycpayroll_link_properties_typeProperties_userName": {
-						"value": "[parameters('nycpayroll_link_properties_typeProperties_userName')]"
 					}
 				}
 			},
