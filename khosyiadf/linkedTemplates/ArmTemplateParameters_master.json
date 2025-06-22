@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "khosyiadf"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"AzureSynapseAnalytics1_password": {
+			"value": ""
+		},
+		"nycpayroll_link_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://khosyistorageaccount.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "khosyisqldbserver.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "khosyisqldb"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "sqldbadmin"
+		},
+		"AzureSynapseAnalytics1_properties_typeProperties_server": {
+			"value": "khosyisynapseworkspace-ondemand.sql.azuresynapse.net"
+		},
+		"AzureSynapseAnalytics1_properties_typeProperties_database": {
+			"value": "udacity"
+		},
+		"AzureSynapseAnalytics1_properties_typeProperties_userName": {
+			"value": "sqladminuser"
+		},
+		"nycpayroll_link_properties_typeProperties_server": {
+			"value": "kush-sql-db-server.database.windows.net"
+		},
+		"nycpayroll_link_properties_typeProperties_database": {
+			"value": "db_nycpayroll"
+		},
+		"nycpayroll_link_properties_typeProperties_userName": {
+			"value": "sqldbadmin"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
