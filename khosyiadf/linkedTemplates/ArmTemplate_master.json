@@ -47,10 +47,6 @@
 			"type": "string",
 			"defaultValue": "sqladminuser"
 		},
-		"trigger1_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/7c807c5f-59fe-4b36-a3d2-8364c12a574e/resourceGroups/RG/providers/Microsoft.Storage/storageAccounts/khosyistorageaccount"
-		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -125,9 +121,6 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"trigger1_properties_typeProperties_scope": {
-						"value": "[parameters('trigger1_properties_typeProperties_scope')]"
 					}
 				}
 			},

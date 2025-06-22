@@ -35,9 +35,6 @@
 		"AzureSynapseAnalytics1_properties_typeProperties_userName": {
 			"value": "sqladminuser"
 		},
-		"trigger1_properties_typeProperties_scope": {
-			"value": "/subscriptions/7c807c5f-59fe-4b36-a3d2-8364c12a574e/resourceGroups/RG/providers/Microsoft.Storage/storageAccounts/khosyistorageaccount"
-		},
 		"containerUri": {
 			"value": ""
 		},
